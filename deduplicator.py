@@ -26,7 +26,7 @@ class Consolidator(object):
 
         self.dry_run = dry_run
 
-    def do_it(self):
+    def dedupe_it(self):
         print("Comparing:")
         print("Old path: ", self.old_path)
         print("New path: ", self.new_path)
@@ -77,8 +77,6 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(description=description)
     parser.add_argument("-p", "--previous", help="directory of previous backup", required=True)
     parser.add_argument("-n", "--new", help="directory of newer backup", required=True)
-    parser.add_argument('--modify-original', dest='in_place', action='store_true')
-    parser.set_defaults(in_place=False)
     parser.add_argument('--dry-run', dest='dry_run', action='store_true')
     parser.set_defaults(dry_run=False)
     parsed = parser.parse_args()
@@ -92,4 +90,4 @@ if __name__ == '__main__':
 
     c = Consolidator(old_path, new_path, dry_run=parsed.dry_run)
 
-    c.do_it()
+    c.dedupe_it()
