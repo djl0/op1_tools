@@ -38,7 +38,7 @@ class Consolidator(object):
     def check_file(self, file_path):
         new_source_file, new_hash = self.get_source_file_and_hash(file_path)
         old_file_path = file_path.replace(self.new_path, self.old_path)
-        old_source_file, old_hash = self.get_source_file_and_hash(file_path)
+        old_source_file, old_hash = self.get_source_file_and_hash(old_file_path)
 
         # if there is an old file, hashes are the same, and source files aren't already equal:
         if old_hash is not None and new_hash == old_hash and new_source_file != old_source_file:
